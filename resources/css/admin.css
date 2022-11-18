@@ -1,0 +1,62 @@
+#components-layout-demo-custom-trigger .trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+#components-layout-demo-custom-trigger .trigger:hover {
+  color: #1890ff !important;
+}
+
+#components-layout-demo-custom-trigger .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.123);
+  background-image: url('../images/logo.png');
+  background-position: center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+}
+
+.site-layout .site-layout-background {
+  background: #fff;
+}
+
+.ant-layout {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  min-height: 100% !important;
+  background: #f0f2f5;
+}
+
+.anticon svg {
+  display: flex !important;
+  align-items: center !important;
+  margin-left: 15px;
+}
+.site-layout .site-layout-background {
+  background: #fff;
+  display: flex;
+  align-content: center !important;
+  justify-content: space-between;
+}
+.anticon[tabindex] {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.btn-user{
+  margin-right: 20px;
+}
+.btn-login{
+    margin-right: 20px;
+}

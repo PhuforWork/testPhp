@@ -1,0 +1,4 @@
+const SET_EDIT_TYPES = "SET_EDIT_TYPES";
+const SET_API = "SET_API";
+
+export { SET_EDIT_TYPES, SET_API };

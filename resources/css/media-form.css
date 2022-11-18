@@ -1,0 +1,9 @@
+.media-form {
+    display: block !important;
+}
+.ant-layout-content {
+    display: block !important;
+}
+.preview-form {
+ justify-content: center;
+}
