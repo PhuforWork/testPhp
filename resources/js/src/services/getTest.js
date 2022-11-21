@@ -1,8 +1,8 @@
 import { request } from "../configs/axios";
 
-const fetchGetform = () => {
+const fetchGetform = (page) => {
     return request({
-        url: "/api/media-table",
+        url: `/api/media-table?page=${page}`,
         method: "GET",
     });
 };

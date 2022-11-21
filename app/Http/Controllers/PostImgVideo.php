@@ -30,22 +30,7 @@ class PostImgVideo extends Controller
             }
         }
     }
-    // function postImage($request)
-    // {
-    //     $arrLink = "";
-    //     if ($request->hasFile('File')) {
-    //         $file = $request->file('File');
-    //         $fileName = $file->getClientOriginalName();
-    //         $patch = "uploads/hosted" . "/" . date('Y') . "/" . date('m');
-    //         // $arrResult = UploadFTP::upload($patch, $file, $fileName);
-    //         $arrResult = Storage::disk('public')->putFileAs($patch, $file, $fileName);
-    //         $arrLink = asset($arrResult);
-    //     }
-    //     $v = Validator::make($file,['File'=> 'required|mimes:png,jpg,gif']);
-    //     echo $v;
-    //     $this->rules($arrResult);
-    //     return $arrLink;
-    // }
+
     public function postVideo()
     {
         $request = request();

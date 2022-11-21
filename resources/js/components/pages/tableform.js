@@ -1,6 +1,6 @@
 import { Space, Table, Tag } from "antd";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchDeletebyIdform, fetchGetform } from "../../src/services/getTest";
 import { useAsync } from "../hooks/useAsync";
 import { useNavigate } from "react-router";
@@ -10,10 +10,11 @@ import { SET_API } from "../reduxStore/types/edit.types";
 export default function Tableform() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [pages, setPages] = useState(1);
     const { listAPI } = useSelector((state) => state.editReducer);
     const { state: getmedia } = useAsync({
         dependancies: [],
-        service: () => fetchGetform(),
+        service: () => fetchGetform(pages),
     });
     useEffect(() => {
         dispatch({
@@ -21,33 +22,29 @@ export default function Tableform() {
             payload: getmedia,
         });
     }, [getmedia]);
+    console.log(listAPI);
     const columns = [
         {
             title: "id",
             dataIndex: "id",
-            key: "id",
             render: (text) => <a>{text}</a>,
         },
         {
             title: "Name",
             dataIndex: "name",
-            key: "name",
             render: (text) => <a>{text}</a>,
         },
         {
             title: "Types",
             dataIndex: "types",
-            key: "types",
         },
         {
             title: "Creative",
             dataIndex: "creative",
-            key: "creative",
         },
         {
             title: "Action",
             dataIndex: "action",
-            key: "action",
             render: (id) => {
                 return (
                     <>
@@ -75,8 +72,9 @@ export default function Tableform() {
             },
         },
     ];
-    const data = listAPI.map((ele, index) => {
+    const data = listAPI.data?.map((ele, index) => {
         return {
+            key: index,
             id: index + 1,
             name: ele.name,
             types: ele.types,
@@ -90,6 +88,17 @@ export default function Tableform() {
                 style={{ height: "100%" }}
                 columns={columns}
                 dataSource={data}
+                pagination={{
+                    total: 100,
+                    onChange: async (page) => {
+                        setPages(page);
+                        const result = await fetchGetform(page);
+                        dispatch({
+                            type: SET_API,
+                            payload: result.data,
+                        });
+                    },
+                }}
             />
         </div>
     );

@@ -13,7 +13,8 @@ class ControllerGetmedia extends Controller
     {
         $request = request();
         if ($request->isMethod('GET')) {
-            $media = modify_media_test::all();
+            $media = modify_media_test::simplePaginate(10);
+            $media->setPath('api/media-table');
             return response()->json($media);
         }
     }
